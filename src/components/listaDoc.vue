@@ -49,7 +49,7 @@ export default {
   created() {
     let username = localStorage.getItem("current_username");
     axios
-      .get("http://127.0.0.1:8000/resumendoc/" + username)
+      .get("https://jadcs-backend.herokuapp.com/resumendoc/" + username)
       .then((response) => {
         this.lista_documentos = response.data;
       })

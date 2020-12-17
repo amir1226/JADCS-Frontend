@@ -58,7 +58,9 @@ export default {
     this.username = this.$route.params.username;
     let self = this;
     axios
-      .get("http://127.0.0.1:8000/usuario/perfil/" + this.username)
+      .get(
+        "https://jadcs-backend.herokuapp.com/usuario/perfil/" + this.username
+      )
       .then((result) => {
         self.perfil = result.data.Perfil;
         self.Nombre = self.perfil.Nombre;
