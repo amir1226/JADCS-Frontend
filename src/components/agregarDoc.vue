@@ -94,7 +94,7 @@ export default {
           elJson
         )
         .then((response) => {
-          alert("Documento cargado en la lista de" + username);
+          alert("Documento cargado en la lista de " + username);
         })
         .catch((err) => {
           console.log(err);
