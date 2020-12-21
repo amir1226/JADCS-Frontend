@@ -8,25 +8,24 @@
     <table class="menu">
       <tr>
         <td class="botones">
-          <button v-on:click="iniciar">Iniciar sesión</button>
+          <button v-on:click="getResumen" v-if="is_auth">Resumen Usuario</button>
         </td>
         <td class="comp" rowspan="3">
           <div class="main-component">
-            <router-view> </router-view>
+            <router-view  v-on:log-in="logIn" ></router-view> 
           </div>
         </td>
       </tr>
       <tr>
         <td class="botones">
-          <button v-on:click="getResumen">Resumen Usuario</button>
+          <button v-on:click="agregar_doc" v-if="is_auth">Agregar Documento</button>
         </td>
       </tr>
-
       <tr>
         <td class="botones">
-          <button v-on:click="agregar_doc">Agregar Documento</button>
+          <button v-on:click="logOut" v-if="is_auth">Cerrar sesión</button>
         </td>
-      </tr>
+      </tr>      
     </table>
 
     <div class="footer">
@@ -46,6 +45,27 @@ export default {
     };
   },
   methods: {
+    updateAuth: function(){
+      var self = this
+      self.is_auth  = localStorage.getItem('is_Auth') || false
+      if(self.is_auth == false){
+        self.$router.push({name: "login"})
+      }else{
+        let username = localStorage.getItem("current_username")
+        self.$router.push({name: "sesionIn"})
+      }  
+    },
+    logIn: function(username){
+
+      localStorage.setItem('current_username', username)
+      localStorage.setItem('is_Auth', true)
+      this.updateAuth()
+    },
+    logOut: function(){
+      localStorage.removeItem('is_Auth')
+      localStorage.removeItem('current_username')
+      this.updateAuth()
+    },
     iniciar: function () {
       let auth = localStorage.getItem("is_Auth");
       let sesion = auth.localeCompare(false);
@@ -85,11 +105,10 @@ export default {
       }
     },
   },
-  beforeCreate: function () {
-    localStorage.setItem("is_Auth", false);
-    localStorage.setItem("current_username", "batman");
-    this.$router.push({ name: "home" });
-  },
+  created: function(){
+    this.$router.push({name: "root"})
+    this.updateAuth()
+  }  
 };
 </script>
 

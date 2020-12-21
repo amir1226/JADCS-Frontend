@@ -7,7 +7,7 @@
 
 <script>
     export default {
-        name: "Sesion",
+        name: "SesionIn",
         data:function(){
             return {
                 username: ""
