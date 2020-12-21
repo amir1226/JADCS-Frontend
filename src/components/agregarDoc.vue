@@ -90,11 +90,12 @@ export default {
       };
       axios
         .post(
-          "http://127.0.0.1:8000/cargar/documento?nombre=" + username,
+          "https://jadcs-backend.herokuapp.com/cargar/documento?nombre=" +
+            username,
           elJson
         )
         .then((response) => {
-          alert("Documento cargado en la lista de" + username);
+          alert("Documento cargado en la lista de " + username);
         })
         .catch((err) => {
           console.log(err);
