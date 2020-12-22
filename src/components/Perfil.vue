@@ -1,4 +1,43 @@
 <template>
+  <div>
+    <div id="Perfil">
+      <b-row>
+        <b-col cols="6">
+          <h3>PERFIL DEL USUARIO</h3>
+          <p>
+            Usuario:
+            <span>{{ username }}</span>
+          </p>
+          <p>
+            Nombre:
+            <span>{{ Nombre }}</span>
+          </p>
+          <p>
+            Apellido:
+            <span>{{ Apellido }}</span>
+          </p>
+          <p>
+            Categoría:
+            <span>{{ Categoria }}</span>
+          </p>
+        </b-col>
+        <b-col cols="6" v-if="esJefe">
+          <h3>PERSONAL A CARGO</h3>
+          <ul>
+            <li v-for="(persona, index) in Equipo" :key="index">
+              {{ persona }}
+            </li>
+          </ul>
+        </b-col>
+      </b-row>
+    </div>
+    <div id="ListaDocumentos" class="mt-3">
+      <ListaDoc />
+    </div>
+  </div>
+</template>
+
+<!--
   <div id="Perfil">
     <div class="Info Usuario">
       <h2>PERFIL DEL USUARIO</h2>
@@ -36,8 +75,7 @@
       <ListaDoc />
     </div>
   </div>
-</template>
-
+  -->
 <script>
 import axios from "axios";
 import ListaDoc from "./listaDoc.vue";
@@ -81,14 +119,4 @@ export default {
 </script>
 
 <style>
-#Perfil {
-  width: 98%;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  color: rgb(2, 71, 39);
-}
-.ListaDocumentos {
-  margin-top: 20px;
-}
 </style>

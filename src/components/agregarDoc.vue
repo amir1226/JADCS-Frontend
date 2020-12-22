@@ -1,5 +1,60 @@
 <template>
-  <div class="AgregarDocumentos">
+  <div>
+    <b-row class="justify-content-md-center font-weight-bold">
+      <b-col>
+        <h3>Agregar Documento</h3>
+      </b-col>
+    </b-row>
+    <b-row class="justify-content-md-center mt-5">
+      <b-col cols="12" md="2">
+        <p class="h5">Radicado</p>
+      </b-col>
+      <b-col cols="12" md="2">
+        <b-form-input type="text" v-model="id_radicado"> </b-form-input>
+      </b-col>
+      <b-col cols="12" md="2">
+        <p class="h5">Fecha de radicación</p>
+      </b-col>
+      <b-col cols="12" md="2">
+        <b-form-input type="text" v-model="Fradicacion"> </b-form-input>
+      </b-col>
+      <b-col cols="12" md="2">
+        <p class="h5">Fecha de vencimiento</p>
+      </b-col>
+      <b-col cols="12" md="2">
+        <b-form-input type="text" v-model="Fvencimiento"> </b-form-input>
+      </b-col>
+    </b-row>
+    <b-row class="justify-content-md-center mt-5">
+      <b-col cols="12" md="2">
+        <p class="h5">Tipo</p>
+      </b-col>
+      <b-col cols="12" md="2">
+        <b-form-select v-model="tipo" :options="options"></b-form-select>
+      </b-col>
+      <b-col cols="12" md="2">
+        <p class="h5">Status</p>
+      </b-col>
+      <b-col>
+        <b-form-input type="text" v-model="Status"> </b-form-input>
+      </b-col>
+      <b-col cols="12" md="2">
+        <p class="h5">Anexos</p>
+      </b-col>
+      <b-col cols="12" md="2">
+        <b-form-input type="number" v-model="Anexos" min="0"> </b-form-input>
+      </b-col>
+    </b-row>
+    <b-row class="mt-5">
+        <b-col cols="12">
+          <b-button variant="dark" @click="agregarDocumento" size="lg"
+            >Agregar Documento</b-button
+          >
+        </b-col>
+  </div>
+</template>
+<!--
+<div class="AgregarDocumentos">
     <h2>Agregar Documento</h2>
     <table>
       <tr id="Primera Fila">
@@ -50,10 +105,8 @@
     </table>
     <button v-on:click="agregarDocumento" id="Agregar">Agregar</button>
   </div>
-</template>
-
+  -->
 <script>
-//Prueba
 import axios from "axios";
 export default {
   name: "AgregarDoc",
@@ -66,6 +119,12 @@ export default {
       tipo: "",
       Status: "",
       Anexos: 0,
+      options: [
+        { value: null, text: "Seleccione una opción" },
+        { value: "derecho de peticion", text: "Derecho de petición" },
+        { value: "tutelas", text: "Tutelas" },
+        { value: "consultas", text: "Consultas" },
+      ],
     };
   },
   methods: {
@@ -107,27 +166,4 @@ export default {
 </script>
 
 <style>
-.AgregarDocumentos {
-  color: rgb(2, 71, 39);
-}
-
-.AgregarDocumentos table {
-  position: relative;
-  left: 7%;
-  border-spacing: 10px;
-}
-.AgregarDocumentos button {
-  background-color: rgb(110, 108, 69);
-  color: azure;
-  box-shadow: 5px;
-  margin-top: 25px;
-  width: 150px;
-}
-
-#Agregar {
-  height: 60px;
-  position: relative;
-  left: 35%;
-  border-radius: 5px;
-}
 </style>
