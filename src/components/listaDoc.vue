@@ -21,17 +21,9 @@
           <td>{{ documento.status }}</td>
           <td>{{ documento.anexos }}</td>
           <td class="semaforo">
-            <p id="verde" v-if="documento.semaforo == 'verde'" class="mt-1"></p>
-            <p
-              id="amarillo"
-              v-else-if="documento.semaforo == 'amarillo'"
-              class="mt-1"
-            ></p>
-            <p
-              id="rojo"
-              v-else-if="documento.semaforo == 'rojo'"
-              class="mt-1"
-            ></p>
+            <p id="verde" v-if="documento.semaforo == 'verde'"></p>
+            <p id="amarillo" v-else-if="documento.semaforo == 'amarillo'"></p>
+            <p id="rojo" v-else-if="documento.semaforo == 'rojo'"></p>
           </td>
         </tr>
       </table>
